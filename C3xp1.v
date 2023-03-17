@@ -200,3 +200,17 @@ Proof.
 Qed.
 
 End KobayashiGardenTheorem_3xp1.
+
+Lemma R_Definition_False : False.
+Proof.
+pose proof R_Definition 1 0 as H.
+assert (0 < 1) as H0 by lia.
+specialize (H H0).
+destruct H as [H1 H2].
+assert (H3 : Nat.Odd 1) by (exists 0; lia).
+specialize (H1 H3).
+lia.
+Qed.
+
+Print Assumptions KobayashiGardenTheorem_AllNatReach1_3xp1_space.
+(* Axioms: R_Definition : ∀ x y : nat, Rdef x y *)
