@@ -203,12 +203,15 @@ End KobayashiGardenTheorem_3xp1.
 
 Lemma R_Definition_False : False.
 Proof.
-pose proof R_Definition 1 0 as H.
+pose proof R_Definition 1 2 as H.
+unfold Rdef in H.
 assert (0 < 1) as H0 by lia.
+assert (0 < 2) as H1 by lia.
 specialize (H H0).
-destruct H as [H1 H2].
-assert (H3 : Nat.Odd 1) by (exists 0; lia).
-specialize (H1 H3).
+specialize (H H1).
+destruct H as [H2 H3].
+assert (H4 : Nat.Odd 1) by (exists 0; lia).
+specialize (H2 H4).
 lia.
 Qed.
 
